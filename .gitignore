@@ -4,3 +4,5 @@ craft/app
 craft/config
 craft/plugins
 craft/storage
+public/img
+public/imager
