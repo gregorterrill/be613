@@ -1,0 +1,42 @@
+<footer class="site-footer">
+
+	<div class="container container--wide">
+		<a href="{{ siteUrl }}" class="logo logo--black">
+			{{ helpers.icon('logo') }}
+		</a>
+
+		<nav class="footer-nav">
+			<ul class="footer-nav__list">
+				{% for item in menu.menuItems %}
+				<li class="footer-nav__item"><a class="footer-nav__link" href="{{ item.url }}">{{ item.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</nav>
+
+		<ul class="social__list">
+			<li class="social__item">
+				<a class="social__link" href="https://www.instagram.com/be613ott" target="_blank">
+					{{ helpers.icon('instagram') }}
+				</a>
+			</li>
+			<li class="social__item">
+				<a class="social__link" href="https://www.facebook.com/be613ott" target="_blank">
+					{{ helpers.icon('facebook') }}
+				</a>
+			</li>
+			<li class="social__item">
+				<a class="social__link" href="https://www.twitter.com/be613ott" target="_blank">
+					{{ helpers.icon('twitter') }}
+				</a>
+			</li>
+			<li class="social__item">
+				<a class="social__link" href="https://www.linkedin.com/company/11440269" target="_blank">
+					{{ helpers.icon('linkedin') }}
+				</a>
+			</li>
+		</ul>
+
+		<p class="copyright">&copy;{{ "now"|date('Y') }} Be613. <a href="/privacy-policy/">Privacy Policy</a>.</p>
+	</div>
+
+</footer>

@@ -1,0 +1,56 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+	{% if entry.headerBackground is empty %}
+	<div class="container">
+		<h1 class="page-title">{{ entry.title }}</h1>
+	</div>
+	{% endif %}
+
+	<div class="module module--white m-featured-event">
+		<div class="container">
+
+			<h2>{{ entry.title }}</h2>
+
+			<div class="m-featured-event__event m-featured-event__event--single">
+
+				<div class="m-featured-event__desc">
+					{{ entry.eventDescription }}
+				</div>
+
+				<div class="m-featured-event__event-content">
+					<p><strong>Event Type:</strong> {{ entry.eventType }}</p>
+					<p><strong>Date:</strong> {{ entry.date|date('F j, Y') }}</p>
+					<p><strong>Time:</strong> {{ entry.date|date('g:i A') }}{% if entry.endTime %} - {{ entry.endTime|date('g:i A') }}{% endif %}</p>
+					<p><strong>Location:</strong> {{ entry.location }}</p>
+
+					{% if entry.soldOut %}
+					<a class="btn btn--sold-out" href="#">Sold Out</a>
+					{% elseif entry.registrationLink is not empty %}
+					<a class="btn" href="{{ entry.registrationLink }}">Get tickets!</a>
+					{% else %}
+					<a class="btn btn--sold-out" href="#">Coming soon</a>
+					{% endif %}
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	{% if entry.speakers %}
+		{% include 'modules/_profiles' with {
+			block : {
+				backgroundColor: 'white',
+				heading: (entry.speakersHeading is not empty) ? entry.speakersHeading : 'Speakers',
+				headingStyle: 'normal',
+				profileSocialMediaStyle: 'icons',
+				textContent: null,
+				children: entry.speakers
+			}
+		} %}
+	{% endif %}
+
+	{% include 'modules/_newsletter' %}
+
+{% endblock %}

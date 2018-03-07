@@ -1,0 +1,111 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+{% spaceless %}
+
+{# Get our macros #}
+{% import 'partials/_macros' as helpers %}
+
+{% if entry is defined %}
+
+	{# Set body classes #}
+	{% set currentSection = entry.section.name | kebab %}
+	{% set currentEntryType = entry.type.name | kebab %}
+
+{% else %}
+	{# Set body classes #}
+	{% set currentSection = 'none' %}
+	{% set currentEntryType = 'none' %}
+
+{% endif %}
+
+{# Whew, okay, onto the actual HTML #}
+
+{% endspaceless %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="home" href="{{ siteUrl }}" />
+
+		{# Preconnects #}
+		<link rel="preconnect" href="https://fonts.gstatic.com/">
+		<link rel="preconnect" href="https://use.typekit.net/">
+
+		{# Favicons #}
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#174375">
+		<meta name="theme-color" content="#ffffff">
+
+		{# SEOmatic outputs title, meta, GA / GTM code #}
+		{% hook 'seomaticRender' %}
+
+		{# Scripts / Web Fonts #}
+		{% includeJsFile "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" first %}
+		{% set webFontConfigJs %}
+		WebFont.load({
+	    typekit: {
+		     id: 'lmz6fqp'
+		  },
+		  google: {
+		    families: ['Karla']
+		  }
+	  });
+		{% endset %}
+		{% includeJs webFontConfigJs %}
+		{% includeJsFile "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" first %}
+  	{% includeJsFile "/dist/scripts.min.js"|cacheBuster %}
+
+		{# Styles #}
+  	{% includeCssFile "/dist/style.css"|cacheBuster first %}
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s)
+		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+		n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t,s)}(window,document,'script',
+		'https://connect.facebook.net/en_US/fbevents.js');
+		 fbq('init', '498842123850081'); 
+		fbq('track', 'PageView');
+		</script>
+		<noscript>
+		<img height="1" width="1" 
+		src="https://www.facebook.com/tr?id=498842123850081&ev=PageView
+		&noscript=1"/>
+		</noscript>
+		<!-- End Facebook Pixel Code -->
+
+	</head>
+
+	<body class="section-{{ currentSection }} entry-{{ currentEntryType }}">
+
+		{% include 'partials/_header' %}
+
+		<main>
+			{% block content %}
+				{# Content will be added here #}
+			{% endblock %}
+		</main>
+
+		{% include 'partials/_footer' %}
+
+		<div class="site-overlay"></div>
+
+	</body>
+</html>

@@ -1,0 +1,85 @@
+.m-profiles__profiles {
+	margin-top:$grid-spacing;
+}
+
+.m-profiles__profile {
+	text-align:center;
+	margin:$grid-spacing/2 0 $grid-spacing;
+
+	@include mq(tab) {
+		display:flex;
+		text-align:left;
+	}
+}
+
+.m-profiles__info {
+	width:200px;
+	margin:auto;
+
+	@include mq(tab) {
+		margin:0;
+	}
+
+	.m-profiles__link {
+		margin:1rem 0;
+	}
+}
+
+.m-profiles__photo {
+	width:200px;
+	height:200px;
+	background-color:$grey;
+	margin-bottom:$grid-spacing/2;
+}
+
+.m-profiles__name {
+	font-size:1.75rem;
+}
+
+.m-profiles__role {
+	@extend .heading;
+	text-transform:none;
+	letter-spacing:0;
+	font-size:1.5rem;
+	margin-bottom:1rem;
+}
+
+.m-profiles__social-icon {
+	display:inline-block;
+	color:$black;
+	margin-right:0.5rem;
+	@include transition(normal,color);
+
+	@include interact {
+		color:$blue;
+	}
+
+	svg {
+		width:3rem;
+		height:3rem;
+	}
+}
+
+.m-profiles__details {
+	text-align:left;
+	padding-top:$grid-spacing/2;
+
+	@include mq(tab) {
+		flex:1;
+		padding-top:0;
+		padding-left:$grid-spacing;
+	}
+}
+
+.m-profiles__bio {
+	margin-bottom:1rem;
+}
+
+.m-profiles__link {
+	margin:0;
+
+	span {
+		font-family:$font-heading;
+		font-weight:bold;
+	}
+}

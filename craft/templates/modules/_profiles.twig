@@ -1,0 +1,68 @@
+<div class="module module--{{ block.backgroundColor }} m-profiles">
+
+	<div class="container">
+
+		<h2>{{ block.heading }}</h2>
+
+		{{ block.textContent }}
+
+		<div class="m-profiles__profiles">
+
+			{% for profile in block.children %}
+
+			<div class="m-profiles__profile">
+				<div class="m-profiles__info">
+					{% if profile.photo.first is not null %}
+					<img class="m-profiles__photo" src="{{ profile.photo.first.getUrl('square') }}" alt="{{ profile.fullName }} headshot" />
+					{% endif %}
+					<h3 class="m-profiles__name">{{ profile.fullName }}</h3>
+					<p class="m-profiles__role">{{ profile.titleOrganization }}</p>
+					{% if block.profileSocialMediaStyle == 'icons' %}
+						{% if profile.websiteUrl %}
+						<p class="m-profiles__link"><a href="{{ profile.websiteUrl }}" target="_blank">{{ profile.websiteUrl }}</a></p>
+						{% endif %}
+						{% if profile.instagramHandle %}
+						<a class="m-profiles__social-icon" href="https://instagram.com/{{ profile.instagramHandle }}" target="_blank">
+							{{ helpers.icon('instagram') }}
+						</a>
+						{% endif %}
+						{% if profile.twitterHandle %}
+						<a class="m-profiles__social-icon" href="https://twitter.com/{{ profile.twitterHandle }}" target="_blank">
+							{{ helpers.icon('twitter') }}
+						</a>
+						{% endif %}
+						{% if profile.linkedinHandle %}
+						<a class="m-profiles__social-icon" href="https://linkedin.com/in/{{ profile.linkedinHandle }}" target="_blank">
+							{{ helpers.icon('linkedin') }}
+						</a>
+						{% endif %}
+					{% endif %}
+				</div>
+				<div class="m-profiles__details">
+					<div class="m-profiles__bio">
+						{{ profile.bio }}
+					</div>
+					{% if block.profileSocialMediaStyle == 'textLinks' %}
+						{% if profile.websiteUrl %}
+						<p class="m-profiles__link"><a href="{{ profile.websiteUrl }}" target="_blank">{{ profile.websiteUrl }}</a></p>
+						{% endif %}
+						{% if profile.instagramHandle %}
+						<p class="m-profiles__link"><span>Instagram:</span> <a href="https://instagram.com/{{ profile.instagramHandle }}" target="_blank">@{{ profile.instagramHandle }}</a></p>
+						{% endif %}
+						{% if profile.twitterHandle %}
+						<p class="m-profiles__link"><span>Twitter:</span> <a href="https://twitter.com/{{ profile.twitterHandle }}" target="_blank">@{{ profile.twitterHandle }}</a></p>
+						{% endif %}
+						{% if profile.linkedinHandle %}
+						<p class="m-profiles__link"><span>LinkedIn:</span> <a href="https://linkedin.com/in/{{ profile.linkedinHandle }}" target="_blank">{{ profile.linkedinHandle }}</a></p>
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+</div>

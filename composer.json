@@ -1,0 +1,7 @@
+{
+  "require": {
+    "ext-mbstring": "*",
+    "ext-mcrypt": "*",
+    "ext-gd": "*"
+  }
+}

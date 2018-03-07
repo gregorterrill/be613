@@ -1,0 +1,102 @@
+* {
+	box-sizing:border-box;
+}
+
+body {
+	background:$white;
+	font-family:$font-body;
+	color:$black;
+	position:relative;
+	overflow-x:hidden;
+	background-image:url(/img/pattern.svg);
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	background-size:100%;
+	background-position:center top;
+
+	&.nav-open {
+		overflow:hidden;
+	}
+
+	@include mq(tab) {
+		right:0;
+		background-size:cover;
+		@include transition(normal,'right,background-position');
+
+		&.nav-open {
+			right:9rem;
+			background-position:-4.5rem top;
+		}
+	}
+}
+
+.site-overlay {
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	z-index:99;
+	background-color:$white;
+	opacity:1;
+	@include transition(fast,'opacity,top');
+
+	.wf-active & {
+		opacity:0;
+		top:100%;
+	}
+}
+
+//-------------------------------------------------- CONTAINERS
+.container {
+	display:block;
+	position:relative;
+	max-width:900px;
+	padding:0 1rem;
+	margin:auto;
+}
+
+.container--wide {
+	max-width:1280px;
+}
+
+.container--narrow {
+	max-width:720px;
+}
+
+//-------------------------------------------------- MODULES
+.module {
+	padding:$grid-spacing 0;
+}
+
+.module--white {
+	background-color:transparent;
+	+ .module--white { padding-top:0; }
+}
+
+.module--light {
+	background-color:$light;
+	+ .module--light { padding-top:0; }
+}
+
+.module--dark {
+	background-color:$grey;
+	+ .module--dark { padding-top:0; }
+}
+
+.module--gold {
+	background-color:$gold;
+	+ .module--gold { padding-top:0; }
+}
+
+.module--blue {
+	background-color:$blue;
+	+ .module--blue { padding-top:0; }
+
+	h1,h2,h3,h4,h5,h6,p,li,a {
+		color:$white;
+	}
+	h1.page-title,h2 {
+		border-bottom-color:$white;
+	}
+}

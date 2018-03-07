@@ -1,0 +1,27 @@
+<div class="module module--{{ block.backgroundColor }} m-logos">
+	<div class="container">
+
+		{% if block.heading %}
+		<h2>{{ block.heading }}</h2>
+		{% endif %}
+		
+		{% if block.textContent %}
+		{{ block.textContent }}
+		{% endif %}
+		
+		{% if block.children|length %}
+		<div class="m-logos__grid">
+		{% for logo in block.children %}
+		<a class="m-logos__link" href="{{ logo.websiteUrl }}" target="_blank">
+			<img class="m-logos__logo" src="{{ logo.logo.first.url }}" alt="" />
+			{% if logo.heading %}
+			<p class="m-logos__text">{{ logo.heading }}</p>
+			{% endif %}
+		</a>
+		{% endfor %}
+		</div>
+		{% endif %}
+
+	</div>
+		
+</div>

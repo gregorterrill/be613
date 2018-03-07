@@ -1,0 +1,29 @@
+.logo {
+	display:block;
+	position:relative;
+	color:$gold;
+	svg { 
+		width:110px;
+		height:auto;
+	}	
+}
+
+.logo--black { color:$black; }
+
+.logo--hover {
+	svg { @include transition(fast,transform); }
+	@include interact {
+		svg {
+			transform:rotateY(25deg);
+		}
+	}
+}
+
+.logo__overlay {
+	position:absolute;
+	left:0;
+	top:0;
+	display:block;
+	width:110px;
+	height:auto;
+}

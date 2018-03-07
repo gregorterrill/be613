@@ -1,0 +1,29 @@
+.m-logos__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap:$grid-spacing;
+	align-items: center;
+	justify-content: center;
+}
+
+.m-logos__link {
+	display:inline-block;
+	display:grid;
+	justify-content:center;
+	text-decoration:none;
+	align-content:end;
+	grid-template-rows:repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.m-logos__logo {
+	width:200px;
+	max-width:100%;
+	height:auto;
+	align-self:end;
+}
+
+.m-logos__text {
+	text-decoration:none;
+	text-align:center;
+	margin-top:$grid-spacing/2;
+}

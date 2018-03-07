@@ -1,0 +1,23 @@
+.m-contact-form {
+	input[type="text"],
+	input[type="email"],
+	textarea,
+	select {
+		font-size:1.25rem;
+		margin-bottom:$grid-spacing/2;
+	}
+	input[type="submit"] {
+		display:block;
+	}
+
+	.errors {
+		color:$blue;
+		margin:0 0 1.5rem;
+		padding:0;
+		list-style-type:none;
+	}
+}
+
+#yourQuestion {
+	display:none;
+}

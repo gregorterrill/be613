@@ -1,0 +1,79 @@
+@mixin mq($breakpoint) {
+  
+  $query: map-get($media-queries, $breakpoint);
+
+  // If no query was found, just output a custom query. An empty query means it
+  // was mapped empty (and used for grids), otherwise it's a mapped query.
+  @if ($query == null) {
+
+    @media #{$breakpoint} {
+      @content;
+    }
+
+  } @else if ($query == '') {
+
+    @content;
+
+  } @else {
+
+    @media #{$query} {
+      @content;
+    }
+
+  }
+
+}
+
+/**
+ * Hover/active/focus state mixin
+ * 
+ * Adds styles for interaction states
+ */
+@mixin interact($self: false) {
+    @if $self {
+        &,
+        &:focus,
+        &:hover,
+        &:active {
+            @content;
+        }
+    } @else {
+        &:focus,
+        &:hover,
+        &:active {
+            @content;
+        }
+    }
+}
+
+/**
+ * Transition mixin.
+ * 
+ * Looks through the user defined map of transitions and outputs the transition
+ * if it is found. Otherwise it will output a custom transition.
+ * 
+ * Properties can be specified to limit the transition to specific properties.
+ */
+@mixin transition($name, $properties: '') {
+
+  $transition: map-get($transitions, $name);
+
+  // If no transition was found, just output a custom transition.
+  @if ($transition) {
+
+    transition: #{$transition};
+
+  } @else {
+
+    transition: #{$name};
+
+  }
+
+  // If properties were specified, output them as the transition properties.
+  @if ($properties != '') {
+
+    transition-property: #{$properties};
+
+  }
+
+}

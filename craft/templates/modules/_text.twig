@@ -1,0 +1,13 @@
+<div class="module module--{{ block.backgroundColor }} m-text">
+	<div class="container">
+		{{ block.textContent }}
+
+		{% if block.children|length %}
+		<div class="m-text__buttons align-center">
+		{% for button in block.children %}
+		<a class="btn" href="{{ button.buttonLinkUrl }}">{{ button.buttonText }}</a>
+		{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+</div>

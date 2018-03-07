@@ -1,0 +1,15 @@
+.m-newsletter {
+	text-align:center;
+
+	label {
+		max-width:500px;
+		margin-bottom:$grid-spacing/2;
+	}
+}
+
+h2.m-newsletter__heading {
+	margin:0 auto;
+	max-width:none;
+	border-bottom:none;
+	padding-bottom:0;
+}

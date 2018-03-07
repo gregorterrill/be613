@@ -1,0 +1,56 @@
+<div class="module module--{{ block.backgroundColor }} m-event-listings">
+	<div class="container">
+
+		{% set pastEvents = [] %}
+		{% set upcomingEvents = [] %}
+
+		{% for event in craft.entries.section('events').order('date') %}
+			{% if event.date < now %}
+				{% set pastEvents = pastEvents|merge([event]) %}
+			{% else %}
+				{% set upcomingEvents = upcomingEvents|merge([event]) %}
+			{% endif %}
+		{% endfor %}
+		
+		{% if upcomingEvents|length %}
+			<h2>Upcoming Events</h2>
+			{% for event in upcomingEvents %}
+			<div href="{{ event.url }}" class="m-event-listings__event">
+				<img class="m-event-listings__event-image" src="{{ event.eventImage.first.getUrl('square') }}" alt="Event Preview" />
+				<div class="m-event-listings__event-content">
+					<h3 class="m-event-listings__event-title">{{ event.title }}</h3>
+					<p class="m-event-listings__event-date">{{ event.date|date('F j, Y') }}</p>
+					{{ event.eventDescription }}
+					<a href="{{ event.url }}" class="btn">Learn More</a>
+					{% if event.soldOut %}
+					<a class="btn btn--sold-out" href="#">Sold Out</a>
+					{% elseif event.registrationLink is not empty %}
+					<a class="btn" href="{{ event.registrationLink }}">Get tickets!</a>
+					{% else %}
+					<a class="btn btn--sold-out" href="#">Coming soon</a>
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		{% else %}
+			<h2>Upcoming Events</h2>
+			<p>No events to announce at the moment! Stay tuned!</p>
+		{% endif %}
+
+		{% if pastEvents|length %}
+		<h2>Past Events</h2>
+			{% for event in pastEvents %}
+			<div href="{{ event.url }}" class="m-event-listings__event">
+				<img class="m-event-listings__event-image" src="{{ event.eventImage.first.getUrl('square') }}" alt="Event Preview" />
+				<div class="m-event-listings__event-content">
+					<h3 class="m-event-listings__event-title">{{ event.title }}</h3>
+					<p class="m-event-listings__event-date">{{ event.date|date('F j, Y') }}</p>
+					{{ event.eventDescription }}
+					<a href="{{ event.url }}" class="btn">Learn More</a>
+				</div>
+			</div>
+			{% endfor %}
+		{% endif %}
+
+	</div>
+</div>

@@ -1,0 +1,35 @@
+input[type="button"],
+input[type="submit"],
+button,
+.btn {
+	@extend .heading;
+	color:$white;
+	display:inline-block;
+	background-color:$blue;
+	border-radius:0;
+	border:none;
+	font-size:1.5rem;
+	padding:0.75rem 2rem;
+	text-decoration:none;
+	cursor:pointer;
+	-webkit-appearance:none;
+
+	@include transition(normal,background-color);
+
+	@include interact {
+		background-color:lighten($blue,10%);
+	}
+}
+
+.btn--sold-out {
+	background-color:$grey;
+	cursor:default;
+
+	@include interact {
+		background-color:$grey;
+	}
+}
+
+.m-text__buttons {
+	margin-top:$grid-spacing - 1rem;
+}

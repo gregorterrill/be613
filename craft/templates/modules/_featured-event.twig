@@ -1,0 +1,34 @@
+<div class="module module--white m-featured-event">
+	<div class="container">
+
+		{% if block.showUpcomingEventsHeadingImage %}
+		<img class="m-featured-event__upcoming-title" src="/img/featured-event.png" alt="Featured Event" />
+		{% endif %}
+
+		<div class="m-featured-event__event">
+
+			<img class="m-featured-event__event-image" src="{{ block.event.first.eventImage.first.getUrl('square') }}" alt="Event Preview" />
+	
+			<div class="m-featured-event__event-content">
+				<p><strong>Event:</strong> {{ block.event.first.title }}</p>
+				<p><strong>Event Type:</strong> {{ block.event.first.eventType }}</p>
+				<p><strong>Date:</strong> {{ block.event.first.date|date('F j, Y') }}</p>
+				<p><strong>Time:</strong> {{ block.event.first.date|date('g:i A') }}{% if block.event.first.endTime %} - {{ block.event.first.endTime|date('g:i A') }}{% endif %}</p>
+				<p><strong>Location:</strong> {{ block.event.first.location }}</p>
+
+				{% if entry.slug == "__home__" %}
+				<a class="btn" href="{{ craft.entries.id(6).first.url }}">See all events</a>
+				{% elseif block.buttonType == 'learnMore' %}
+				<a class="btn" href="{{ block.event.first.url }}">Learn more</a>
+				{% elseif block.event.first.soldOut %}
+				<a class="btn btn--sold-out" href="#">Sold Out</a>
+				{% elseif block.event.first.registrationLink is not empty %}
+				<a class="btn" href="{{ block.event.first.registrationLink }}">Get tickets!</a>
+				{% else %}
+				<a class="btn btn--sold-out" href="#">Coming soon</a>
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+</div>

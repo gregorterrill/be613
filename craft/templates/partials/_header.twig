@@ -1,0 +1,54 @@
+<header class="site-header{% if entry is defined and entry.headerBackground is not empty %} site-header--image{% else %} site-header--standard{% endif %}">
+
+	{% if entry is defined and entry.headerBackground is not empty %}
+	<div {{ helpers.outputBgAttributes(entry.headerBackground,'site-header__bg') }}></div>
+	{% endif %}
+
+	<div class="container container--wide">
+
+		<div class="site-header__bar">
+
+			<a href="{{ siteUrl }}" class="logo logo--hover">
+				{{ helpers.icon('logo') }}
+
+				{% if entry.type.handle == 'events' and entry.eventLogoOverlay.first is not null %}
+				<img class="logo__overlay" src="{{ entry.eventLogoOverlay.first.url }}" />
+				{% endif %}
+			</a>
+
+			<a href="#" class="site-header__nav-toggle js-nav-toggle">
+				<svg class="site-header__nav-bg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="64px" viewBox="0 0 300 64" xml:space="preserve">
+					<polygon fill="currentColor" points="0,0 16,32 0,64 300,64 300,0 "/>
+				</svg>
+
+				<span class="site-header__nav-toggle-line"></span>
+				<span class="site-header__nav-toggle-line"></span>
+				<span class="site-header__nav-toggle-line"></span>
+			</a>
+		</div>
+
+		{% if entry is defined and entry.headerBackground is not empty and entry.headerOverlayText is not empty %}
+
+		<div class="site-header__content">
+			<h1 class="site-header__heading">{{ entry.headerOverlayText }}</h1>
+		</div>
+
+		{% endif %}
+
+	</div>
+
+</header>
+
+<nav class="site-nav">
+
+	<div class="logo logo--black">
+		{{ helpers.icon('logo') }}
+	</div>
+
+	<ul class="site-nav__list">
+		{% for item in menu.menuItems %}
+		<li class="site-nav__item"><a class="site-nav__link" href="{{ item.url }}">{{ item.title }}</a></li>
+		{% endfor %}
+	</ul>
+
+</nav>

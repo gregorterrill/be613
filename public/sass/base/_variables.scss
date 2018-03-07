@@ -1,0 +1,32 @@
+//-----------------------------------------------------------------[ COLORs ]
+$gold: #e5cb5b;
+$blue: #174375;
+$white: #fff;
+$light: #eceeed;
+$grey: #d8d9d7;
+$black: #000;
+
+//-----------------------------------------------------------------[ FONTS ]
+$font-heading: 'Almaq', 'Almaq Refined', 'almaq-refined', 'Impact', 'Arial Black', 'Arial', 'Helvetica', sans-serif;
+$font-body: 'Karla', 'Arial', 'Helvetica', sans-serif;
+
+//-----------------------------------------------------------------[ PADDING ]
+$grid-spacing: 3rem;
+
+//-----------------------------------------------------------------[ MEDIA QUERIES ]
+$media-queries: (
+  enabled: 'only all',
+  mob:  'screen and (min-width: 20em)',
+  phab: 'screen and (min-width: 40em)',
+  tab:  'screen and (min-width: 50em)',
+  lap:  'screen and (min-width: 65em)',
+  desk: 'screen and (min-width: 80em)',
+);
+
+//-----------------------------------------------------------------[ TRANSITIONS ]
+$transitions: (
+  slow:       'all 0.4s ease-in-out',
+  normal:     'all 0.3s ease-in-out',
+  fast:       'all 0.2s ease-in-out',
+  delay:     'all 0.3s ease-in-out 0.3s',
+);

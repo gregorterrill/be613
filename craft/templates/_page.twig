@@ -1,0 +1,40 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+	{% if entry.headerBackground is empty %}
+	<div class="container">
+		<h1 class="page-title">{{ entry.title }}</h1>
+	</div>
+	{% endif %}
+
+	{% for block in entry.modules %}
+
+		{% switch block.type.handle %}
+
+			{% case 'text' %}
+				{% include 'modules/_text' %}
+
+			{% case 'profiles' %}
+				{% include 'modules/_profiles' %}
+
+			{% case 'featuredEvent' %}
+				{% include 'modules/_featured-event' %}
+
+			{% case 'eventListings' %}
+				{% include 'modules/_event-listings' %}
+
+			{% case 'newsletterSignup' %}
+				{% include 'modules/_newsletter' %}
+
+			{% case 'contactForm' %}
+				{% include 'modules/_contact-form' %}
+
+			{% case 'logos' %}
+				{% include 'modules/_logos' %}
+
+		{% endswitch %}
+
+	{% endfor %}
+
+{% endblock %}

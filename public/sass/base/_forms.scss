@@ -1,0 +1,63 @@
+textarea,
+select,
+input[type="text"],
+input[type="email"] {
+	font-size:1.25rem;
+	padding:0.875rem;
+	background-color:$white;
+	border-radius:0;
+	border:none;
+	-webkit-appearance:none;
+	display:inline-block;
+	vertical-align:top;
+	width:100%;
+	max-width:500px;
+	margin-bottom:1rem;
+
+	@include mq(tab) { margin-bottom:0; }
+
+	&:focus {
+		outline:none;
+	}
+}
+
+.dropdown {
+	position:relative;
+	max-width:500px;
+	background:$white;
+	margin-bottom:1rem;
+
+	select {
+		position:relative;
+		z-index:2;
+		background:transparent;
+		margin-bottom:0 !important;
+	}
+}
+
+.dropdown__expand {
+	position:absolute;
+	z-index:1;
+	top:0;
+	right:0.875rem;
+	font-size:2rem;
+	line-height:1.625;
+	color:$grey;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:$grey;
+  font-style:italic;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color:$grey;
+  font-style:italic;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color:$grey;
+  font-style:italic;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color:$grey;
+  font-style:italic;
+}

@@ -1,0 +1,130 @@
+h1,h2,h3,h4,h5,h6,p,li {
+	&:first-child {
+		margin-top:0;
+	}
+
+	&:last-child {
+		margin-bottom:0;
+	}
+}
+
+.heading {
+	font-family:$font-heading;
+	color:$black;
+	text-transform:uppercase;
+	letter-spacing:0.125rem;
+	margin:0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	@extend .heading;
+}
+
+h1,
+.h1 {
+	font-size:3rem;
+	line-height:1;
+	margin-bottom:0 !important;
+
+	@include mq(tab) {
+		font-size:4rem;
+	}
+}
+
+h2,
+.h2 {
+	font-size:2rem;
+
+	@include mq(tab) {
+		font-size:2.625rem;
+	}
+}
+
+h3,
+.h3 {
+	font-size:2.25rem;
+}
+
+h4,
+.h4 {
+	font-size:2rem;
+}
+
+h5,
+.h5 {
+	font-size:1.75rem;
+}
+
+h6,
+.h6 {
+	font-size:1.5rem;
+}
+
+h1.page-title,
+h2 {
+	padding-bottom:$grid-spacing/2;
+	border-bottom:2px solid $black;
+	margin-top:0;
+	margin-bottom:$grid-spacing;
+
+	@include mq(tab) {
+		max-width:720px;
+	}
+}
+
+p,
+label {
+	font-size:1.25rem;
+	line-height:1.4;
+	margin:0 0 1rem 0;
+}
+
+label {
+	display:block;
+	margin:auto;
+}
+
+.callout {
+	font-family:$font-heading;
+	color:$blue;
+	font-size:1.625rem;
+	text-align:center;
+	position:relative;
+	margin:$grid-spacing 0;
+	padding-bottom:$grid-spacing;
+
+	@include mq(tab) {
+		font-size:2rem;
+	}
+
+	&::after {
+		content:"";
+		height:1px;
+		width:50%;
+		position:absolute;
+		bottom:0;
+		left:25%;
+		background-color:$black;
+	}
+
+	&:first-child {
+		margin-top:0;
+	}
+
+	&:last-child {
+		margin-bottom:0;
+	}
+}
+
+a:not([class]) {
+	color:$blue;
+	@include transition(normal,color);
+
+	@include interact {
+		color:lighten($blue,10%);
+	}
+}
+
+.align-center {
+	text-align:center;
+}
